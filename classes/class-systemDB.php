@@ -264,9 +264,8 @@ class SystemDB
 			return $update;
 		}
 		
-		// The end :)
 		return;
-	} // update
+	}
 
 	/**
 	 * Delete
@@ -309,8 +308,7 @@ class SystemDB
 			// Retorna a consulta
 			return $delete;
 		}
-		
-		// The end :)
+
 		return;
-	} // delete
+	}
 }
