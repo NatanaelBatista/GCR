@@ -36,8 +36,6 @@
 	        .navbar {
 	        	margin-bottom: 0;
 	        	border-radius: 0;
-	        	idth: 100%;
-	        	-index: 1;
 	        }
 
 	        a.in-button {
