@@ -9,7 +9,7 @@
 class UsuariosController extends MainController
 {
 	/**
-	 * get_register_form
+	 * index
 	 *
 	 * Carrega o layaut da página junto com o conteúdo
 	 *
@@ -29,12 +29,12 @@ class UsuariosController extends MainController
 		// Adiciona o conteúdo da página
 		require ABSPATH . '/views/_includes/header.php';
 		require ABSPATH . '/views/_includes/nav.php';
-		require ABSPATH . '/views/usuarios/exibir-usuarios.php';
+		require ABSPATH . '/views/usuarios/listar-usuarios.php';
 		require ABSPATH . '/views/_includes/footer.php';
 	}
 
 	/**
-	 * get_register_form
+	 * inserir
 	 *
 	 * Carrega o layaut da página junto com o conteúdo
 	 *
@@ -57,7 +57,7 @@ class UsuariosController extends MainController
 	}
 
 	/**
-	 * get_register_form
+	 * visualizar
 	 *
 	 * Carrega o layaut da página junto com o conteúdo
 	 *
@@ -77,8 +77,33 @@ class UsuariosController extends MainController
 		// Adiciona o conteúdo da página
 		require ABSPATH . '/views/_includes/header.php';
 		require ABSPATH . '/views/_includes/nav.php';
-		require ABSPATH . '/views/usuarios/exibir-usuarios.php';
+		require ABSPATH . '/views/usuarios/listar-usuarios.php';
 		require ABSPATH . '/views/usuarios/visualizar-usuario.php';
+		require ABSPATH . '/views/_includes/footer.php';
+	}
+
+	/**
+	 * editar
+	 *
+	 * Carrega o layaut da página junto com o conteúdo
+	 *
+	 * @since 0.1
+	 * @access public
+	 */
+	public function editar()
+	{
+		// Carrega o modelo para este view
+        $modelo = $this->load_model('usuarios/usuarios-model');
+
+        $parametros = ( func_num_args() >= 1 ) ? func_get_args( 0 ) : array();
+
+		// Título da página
+		$this->title = 'System';
+
+		// Adiciona o conteúdo da página
+		require ABSPATH . '/views/_includes/header.php';
+		require ABSPATH . '/views/_includes/nav.php';
+		require ABSPATH . '/views/usuarios/editar-usuario.php';
 		require ABSPATH . '/views/_includes/footer.php';
 	}
 }

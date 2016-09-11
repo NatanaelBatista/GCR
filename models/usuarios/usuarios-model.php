@@ -97,6 +97,58 @@ class UsuariosModel
 		{
 			return;
 		}
+
+		// Verifica se o usuário existe
+		$db_check_user = $this->db->query
+		(
+			'SELECT * FROM `users` WHERE `user_id` = ?', 
+			array( 
+				chk_array( $this->form_data, 'user_id')		
+			) 
+		);
+		
+		// Verifica se a consulta foi realizada com sucesso
+		if ( ! $db_check_user ) {
+			$this->form_msg = '<p class="form_error">Internal error.</p>';
+			return;
+		}
+		
+		// Obtém os dados da base de dados MySQL
+		$fetch_user = $db_check_user->fetch();
+		
+		// Configura o ID do usuário
+		$user_id = $fetch_user['user_id'];
+
+		/*if ( ! empty( $user_id ) )
+		{
+			$query = $this->db->update
+			(
+				'users', 'user_id', $user_id, 
+				array(
+					'user_password' => $password, 
+					'user_name' => chk_array( $this->form_data, 'user_name'
+				), 
+			));
+			
+			// Verifica se a consulta está OK e configura a mensagem
+			if ( ! $query ) {
+				$this->form_msg = '<div class="alert alert-danger fade in">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					Não foi possível editar o usuário.</div>';
+				
+				// Termina
+				return;
+			}
+			else
+			{
+				$this->form_msg = '<div class="alert alert-success fade in">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					Usuário editado com sucesso!.</div>';
+				
+				// Termina
+				return;
+			}
+		}
 		else
 		{
 			$query = $this->db->insert
@@ -127,7 +179,110 @@ class UsuariosModel
 				// Termina
 				return;
 			}
+		}*/
+		return $user_id;
+	}
+
+	/**
+	 * validate_register_form
+	 *
+	 * Valida o formulário de envio e cadastra usuários
+	 *
+	 * @since 0.1
+	 * @access public
+	 */
+	public function edit_register_form( $user_id = false )
+	{
+		// Configura os dados do formulário
+		$this->form_data = array();
+
+		// Verifica se algo foi postado
+		if ( 'POST' == $_SERVER['REQUEST_METHOD'] && ! empty ( $_POST ) ) {
+		
+			// Faz o loop dos dados do post
+			foreach ( $_POST as $key => $value ) {
+			
+				// Configura os dados do post para a propriedade $form_data
+				$this->form_data[$key] = $value;
+				
+				// Nós não permitiremos nenhum campos em branco
+				if ( empty( $value ) ) {
+					
+					// Configura a mensagem
+					$this->form_msg = '<p class="form_error">There are empty fields. Data has not been sent.</p>';
+					
+					// Termina
+					return;
+					
+				}			
+			
+			}
 		}
+		else
+		{
+			// Termina se nada foi enviado
+			return;
+		}
+
+		// Verifica se a propriedade $form_data foi preenchida
+		if( empty( $this->form_data ) ) {
+			return;
+		}
+
+		// O ID de usuário que vamos pesquisar
+		$s_user_id = false;
+		
+		// Verifica se você enviou algum ID para o método
+		if ( ! empty( $user_id ) ) {
+			$s_user_id = $user_id[0];
+		}
+		
+		// Verifica se existe um ID de usuário
+		if ( empty( $s_user_id ) ) {
+			return;
+		}
+
+		// Verifica se o usuário existe
+		$db_check_user = $this->db->query ('SELECT * FROM `users` WHERE `user_id` = ?', array( $s_user_id ) );
+
+		// Verifica se a consulta foi realizada com sucesso
+		if ( ! $db_check_user ) {
+			$this->form_msg = '<p class="form_error">Internal error.</p>';
+			return;
+		}
+		else
+		{
+			$query= $this->db->update
+			(
+				'users', 'user_id', $s_user_id, 
+				array(
+					'user' => $this->form_data['user'],
+					'user_password' => $this->form_data['user_password'], 
+					'user_name' => $this->form_data['user_name'],
+				)
+			);
+			
+			// Verifica se a consulta está OK e configura a mensagem
+			if ( ! $query ) {
+				$this->form_msg = '<div class="alert alert-danger fade in">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					Não foi possível editar o usuário.</div>';
+				
+				// Termina
+				return;
+			}
+			else
+			{
+				$this->form_msg = '<div class="alert alert-success fade in">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					Usuário editado com sucesso!.</div>';
+				
+				// Termina
+				return;
+			}
+		}
+		return $this->form_data;
+		//return $s_user_id;
 	}
 
 	/**
@@ -144,8 +299,6 @@ class UsuariosModel
 	{
 		// O ID de usuário que vamos pesquisar
 		$s_user_id = false;
-
-		$this->form_msg = $user_id;
 		
 		// Verifica se você enviou algum ID para o método
 		if ( ! empty( $user_id ) ) {
@@ -179,8 +332,6 @@ class UsuariosModel
 		foreach ( $fetch_userdata as $key => $value ) {
 			$this->form_data[$key] = $value;
 		}
-
-		return $s_user_id;
 	}
 
 	/**

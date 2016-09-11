@@ -69,7 +69,7 @@
 
 											<?php endif; ?>
 
-											<a href="<?php echo HOME_URI; ?>/usuarios/editar" class="btn btn-warning btn-xs">
+											<a href="<?php echo HOME_URI; ?>/usuarios/editar/<?php echo $fetch_userdata['user_id'] ?>" class="btn btn-warning btn-xs">
 												Editar
 											</a>
 										</td>
