@@ -39,6 +39,11 @@
 	        	idth: 100%;
 	        	-index: 1;
 	        }
+
+	        a.in-button {
+				text-decoration: none;
+				color: #fff;
+			}
 		</style>
 	</head>
 	<body>

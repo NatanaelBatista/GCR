@@ -61,7 +61,7 @@
 
 											<?php endif; ?>
 
-											<?php if( $_SERVER['REQUEST_URI'] == '/system/usuarios'): ?>
+											<?php if( $_SERVER['REQUEST_URI'] == '/system/usuarios' ): ?>
 
 											<a href="<?php echo HOME_URI; ?>/usuarios/visualizar/<?php echo $fetch_userdata['user_id'] ?>" class="btn btn-primary btn-xs">
 												Visualizar

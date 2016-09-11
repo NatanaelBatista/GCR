@@ -21,8 +21,6 @@ class UsuariosController extends MainController
 		// Carrega o modelo para este view
         $modelo = $this->load_model('usuarios/usuarios-model');
 
-        $parametros = ( func_num_args() >= 1 ) ? func_get_args( 0 ) : array();
-
 		// Título da página
 		$this->title = 'System';
 
@@ -69,6 +67,7 @@ class UsuariosController extends MainController
 		// Carrega o modelo para este view
         $modelo = $this->load_model('usuarios/usuarios-model');
 
+        // Inclui os parâmetros que são enviados ao método na classe SystemMVC
         $parametros = ( func_num_args() >= 1 ) ? func_get_args( 0 ) : array();
 
 		// Título da página
@@ -95,6 +94,7 @@ class UsuariosController extends MainController
 		// Carrega o modelo para este view
         $modelo = $this->load_model('usuarios/usuarios-model');
 
+        // Inclui os parâmetros que são enviados ao método na classe SystemMVC
         $parametros = ( func_num_args() >= 1 ) ? func_get_args( 0 ) : array();
 
 		// Título da página
