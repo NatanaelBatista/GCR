@@ -1,6 +1,6 @@
 <?php 
 
-	$modelo->edit_register_form( chk_array( $parametros, 0 ) );
+	$editar = $modelo->edit_register_form( chk_array( $parametros, 0 ) );
 	$modelo->get_register_form( chk_array( $parametros, 0 ) );
 
  ?>
@@ -30,7 +30,8 @@
 
 <?php
 	
-	if( $modelo->edit_register_form( chk_array( $parametros, 0 ) ) ) :?>
+	//if( $modelo->edit_register_form( chk_array( $parametros, 0 ) ) ) :
+	if( $editar ): ?>
 
 	<script type="text/javascript">
 

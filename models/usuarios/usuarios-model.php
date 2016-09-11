@@ -60,6 +60,9 @@ class UsuariosModel
 	 */
 	public function create_register_form()
 	{
+		// Define se a operação foi concluída com sucesso
+		$success = false;
+
 		// Configura os dados do formulário
 		$this->form_data = array();
 
@@ -157,11 +160,10 @@ class UsuariosModel
 					else
 					{
 						$this->form_msg = '<div class="alert alert-success fade in">
-							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 							Usuário cadastrado com sucesso!.</div>';
 						
 						// Termina
-						return;
+						return $success = true;
 					}
 				}
 			}
@@ -180,6 +182,7 @@ class UsuariosModel
 	 */
 	public function edit_register_form( $user_id = false )
 	{
+		// Define se a operação foi concluída com sucesso
 		$success = false;
 
 		// Configura os dados do formulário
@@ -204,9 +207,7 @@ class UsuariosModel
 					
 					// Termina
 					return;
-					
 				}			
-			
 			}
 		}
 		else
@@ -216,7 +217,8 @@ class UsuariosModel
 		}
 
 		// Verifica se a propriedade $form_data foi preenchida
-		if( empty( $this->form_data ) ) {
+		if( empty( $this->form_data ) )
+		{
 			return;
 		}
 		else
@@ -225,12 +227,14 @@ class UsuariosModel
 			$s_user_id = false;
 			
 			// Verifica se você enviou algum ID para o método
-			if ( ! empty( $user_id ) ) {
+			if ( ! empty( $user_id ) )
+			{
 				$s_user_id = $user_id[0];
 			}
 			
 			// Verifica se existe um ID de usuário
-			if ( empty( $s_user_id ) ) {
+			if ( empty( $s_user_id ) )
+			{
 				return;
 			}
 			else

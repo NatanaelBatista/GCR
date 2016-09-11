@@ -1,6 +1,6 @@
 <?php 
 
-	$modelo->create_register_form();
+	$inserir = $modelo->create_register_form();
 	
  ?>
 
@@ -27,8 +27,46 @@
 	</div>
 </form>
 
+<?php
+	
+	if( $inserir ) :?>
+
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+			$('#myModal').modal('show');
+		});
+	
+	</script>
+
+	<input type="hidden" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal" value="Visualizar">
+
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a href="<?php echo HOME_URI; ?>/usuarios" class="close" >&times;</a>
+				</div>
+				<div class="modal-body">
+					
+				<?php 
+
+					echo $modelo->form_msg;
+
+					
+				 ?>
+
+				</div>
+			</div> 
+		</div>
+	</div>
+
 <?php 
 
-	echo $modelo->form_msg;
+	$modelo->form_msg = '';
 
+	endif; 
+
+	echo $modelo->form_msg;
+	
  ?>
