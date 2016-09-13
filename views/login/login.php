@@ -15,34 +15,6 @@
 		<!-- Latest compiled JavaScript -->
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-		<style>
-	        
-	        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-	        .row.content {height: 550px}
-	        
-	        /* Set gray background color and 100% height */
-	        .sidenav {
-	          background-color: #f1f1f1;
-	          height: 100%;
-	        }
-	            
-	        /* On small screens, set height to 'auto' for the grid */
-	        @media screen and (max-width: 767px) {
-	          .row.content {height: auto;}
-	        }
-
-	        .navbar {
-	        	margin-bottom: 0;
-	        	border-radius: 0;
-	        }
-
-	        a.in-button {
-				text-decoration: none;
-				color: #fff;
-			}
-
-		</style>
-
 		<script type="text/javascript">
 
 			$(document).ready(function() {
@@ -50,6 +22,13 @@
 			});
 		
 		</script>
+
+		<?php
+
+			// Chama método que irá receber e tratar os dados do formulário
+			$modelo->user_login();
+
+		?>
 
 	</head>
 	<body>
@@ -80,23 +59,43 @@
 					 <h2 class="modal-title">Nome do sistema</h2>
 				</div>
 				<div class="modal-body">
-					 <div class="row">
-						<div class="form-group col-md-10">
-							<label for="email">Email:</label>
-							<input type="text" class="form-control" id="email" name="user">	
+					<form action="" method="post">
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label for="email">Email:</label>
+								<input type="text" class="form-control" id="email" name="user">	
+							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-10">	
-							<label for="senha">Senha:</label>
-							<input type="password" class="form-control" id="senha" name="user_password">	
+						<div class="row">
+							<div class="form-group col-md-12">	
+								<label for="senha">Senha:</label>
+								<input type="password" class="form-control" id="senha" name="user_password">	
+							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-10">
-							<button type="submit" class="btn btn-success">Login</button>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<button type="submit" class="btn btn-success">Login</button>
+							</div>
 						</div>
-					</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								
+								<?php 
+
+								// DEBUG
+								/*
+								echo 'modelo';
+								var_dump( $modelo );
+								*/
+								
+								// Imprime o feedbeck para o usuário
+								echo $modelo->form_msg;
+								
+								?>
+							
+							</div>
+						</div>
+					</form>
 				</div>
 				<div class="modal-footer">
 					<p style="text-align:center;">Copyright &copy; 2016 - by <a href="">Natanael Batista</a></p>

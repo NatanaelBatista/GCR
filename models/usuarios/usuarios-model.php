@@ -5,7 +5,7 @@
  *
  * Classe para registros de usuários
  *
- * @package TutsupMVC
+ * @package system
  * @since 0.1
  */
 class UsuariosModel
@@ -301,12 +301,14 @@ class UsuariosModel
 		$s_user_id = false;
 		
 		// Verifica se você enviou algum ID para o método
-		if ( ! empty( $user_id ) ) {
+		if ( ! empty( $user_id ) )
+		{
 			$s_user_id = $user_id[0];
 		}
 		
 		// Verifica se existe um ID de usuário
-		if ( empty( $s_user_id ) ) {
+		if ( empty( $s_user_id ) )
+		{
 			return;
 		}
 		else
@@ -339,7 +341,8 @@ class UsuariosModel
 				}
 				
 				// Configura os dados do formulário
-				foreach ( $fetch_userdata as $key => $value ) {
+				foreach ( $fetch_userdata as $key => $value )
+				{
 					$this->form_data[$key] = $value;
 				}
 			}
@@ -361,7 +364,8 @@ class UsuariosModel
 		$query = $this->db->query('SELECT * FROM `users` ORDER BY user_id DESC');
 		
 		// Verifica se a consulta está OK
-		if ( ! $query ) {
+		if ( ! $query )
+		{
 			return array();
 		}
 		else
