@@ -59,9 +59,13 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
     <style>
+
       body {
         background-color: rgb( 55,71,79 );
         background-color: rgb( 38,50,56 );
+      }
+      .btn {
+        margin-bottom: 10px;
       }
       .login {
         width: 500px;
@@ -76,48 +80,52 @@
           width: 90%;
         }
       }
+
     </style>
+    <?php 
+
+      // Chama método que irá receber e tratar os dados do formulário
+      $model->user_login();
+
+     ?>
   </head>
   <body>
-  
-
-<div class="mdl-dialog login">
-  <div class="mdl-dialog__content">
-  <div class="row">
-    <div class="col-sm-4">
-        <img src="views/_img/logo.jpg" width="130px" style="margin-bottom: 20px;">
+    <div class="mdl-dialog login">
+      <div class="mdl-dialog__content">
+      <div class="row">
+        <div class="col-sm-4">
+            <img src="views/_img/logo.jpg" width="130px" style="margin-bottom: 20px;">
+          </div>
+        <div class="col-sm-7">
+            <h3>Sistema gerenciador de casas de descanso</h3>
+          </div> 
       </div>
-    <div class="col-sm-7">
-        <h3>Sistema gerenciador de casas de descanso</h3>
-      </div> 
-  </div>
-  <form class="form-horizontal">
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="email">Email</label>
-      <div class="col-sm-10">
-        <input type="email" class="form-control" id="email" placeholder="Insira o email">
+      <form class="form-horizontal" method="post">
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="login">login</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="login" name="user" placeholder="Insira o login">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="pwd">Senha</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" id="pwd" name="user_password" placeholder="Insira a senha">
+          </div>
+        </div>
+        <div class="form-group"> 
+        <div class="col-sm-offset-2 col-sm-10">
+          <div class="checkbox">
+            <label><input type="checkbox"> Lembrar</label>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">Senha</label>
-      <div class="col-sm-10">
-        <input type="password" class="form-control" id="pwd" placeholder="Insira a senha">
-      </div>
-    </div>
-    <div class="form-group"> 
-    <div class="col-sm-offset-2 col-sm-10">
-      <div class="checkbox">
-        <label><input type="checkbox"> Lembrar</label>
-      </div>
-    </div>
-  </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-success">Login</button>
-      </div>
-    </div>
-  </form>
-
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success">Login</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
     <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>

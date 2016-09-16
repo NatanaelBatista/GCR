@@ -21,10 +21,10 @@
   <tbody>
     <tr>
       <td><?php echo $fetch_userdata['user_id'] ?></td>
-      <td class="mdl-data-table__cell--non-numeric"><a href=""><?php echo $fetch_userdata['user_name'] ?></td>
+      <td class="mdl-data-table__cell--non-numeric"><a href="<?php echo HOME_URI; ?>/usuarios/visualizar/<?php echo $fetch_userdata['user_id'] ?>"><?php echo $fetch_userdata['user'] ?></td>
       <td>Administrador</td>
       <td>
-        <button type="button" class="btn btn-warning btn-xs">Editar</button>
+        <a class="btn btn-warning btn-xs" href="<?php echo HOME_URI; ?>/usuarios/editar/<?php echo $fetch_userdata['user_id'] ?>">Editar</a>
       </td>
     </tr>
   </tbody>

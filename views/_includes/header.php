@@ -58,6 +58,7 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.cyan-light_blue.min.css">
     <link rel="stylesheet" href="views/_css/styles.css">
     <link rel="stylesheet" href="../views/_css/styles.css">
+    <link rel="stylesheet" href="../../views/_css/styles.css">
     <style>
     #view-source {
       position: fixed;

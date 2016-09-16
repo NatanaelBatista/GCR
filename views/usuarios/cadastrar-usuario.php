@@ -1,4 +1,16 @@
+<?php 
 
+  $model->create_register_form();
+  
+ ?>
+
+<div class="col-md-12">
+<?php 
+
+  echo $model->form_msg;
+     
+?>
+</div>
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#home">Informações Principais</a></li>
   <li><a data-toggle="tab" href="#menu1">Informações de Contato</a></li>
@@ -107,8 +119,8 @@
     <div id="menu2" class="tab-pane fade">
       <br>
       <div class="form-group col-md-6">
-        <label for="nome">Login</label>
-        <input type="text" class="form-control" id="nome" placeholder="Insira o nome">
+        <label for="login">Login</label>
+        <input type="text" class="form-control" id="login" name="user" placeholder="Insira o login">
       </div>
       <div class="form-group col-md-4">
         <label for="sel1">Permissões</label>
@@ -119,8 +131,8 @@
         </select>
       </div>
       <div class="form-group col-md-3">
-        <label for="nome">Senha</label>
-        <input type="text" class="form-control" id="nome" placeholder="Insira o nome">
+        <label for="pwd">Senha</label>
+        <input type="password" class="form-control" id="pwd" name="user_password" placeholder="Insira a senha">
       </div>
       <div class="form-group col-md-3">
         <label for="nome">Confirme a Senha</label>
@@ -205,3 +217,4 @@
     <button type="submit" class="btn btn-success">Enviar</button>
   </div>
 </form>
+<br>

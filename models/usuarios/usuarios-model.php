@@ -75,18 +75,6 @@ class UsuariosModel
 			{
 				// Insere os dados enviados na propriedade $form_data
 				$this->form_data[$key] = $value;
-
-				// Todos os campos deverão ser preenchidos
-				if ( empty( $value ) )
-				{
-					// Configura a mensagem
-					$this->form_msg = '<div class="alert alert-danger fade in">
-					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					É necessário preencher todos as informações.</div>';
-						
-					// Termina
-					return;	
-				}	
 			}
 		}
 		else
@@ -142,7 +130,6 @@ class UsuariosModel
 					(
 						'users',
 						array(
-							'User_name' => chk_array( $this->form_data, 'user_name'), 
 							'user' => chk_array( $this->form_data, 'user'), 
 							'User_password' => chk_array( $this->form_data, 'user_password'),
 						)
@@ -160,6 +147,7 @@ class UsuariosModel
 					else
 					{
 						$this->form_msg = '<div class="alert alert-success fade in">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 						Usuário cadastrado com sucesso!.</div>';
 						
 						// Termina
@@ -196,18 +184,6 @@ class UsuariosModel
 			
 				// Configura os dados do post para a propriedade $form_data
 				$this->form_data[$key] = $value;
-				
-				// Nós não permitiremos nenhum campos em branco
-				if ( empty( $value ) ) {
-					
-					// Configura a mensagem
-					$this->form_msg = '<div class="alert alert-danger fade in">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-						É necessário preencher todos as informações.</div>';
-					
-					// Termina
-					return;
-				}			
 			}
 		}
 		else
@@ -246,8 +222,8 @@ class UsuariosModel
 				if ( ! $db_check_user )
 				{
 					$this->form_msg = '<div class="alert alert-danger fade in">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-						Erro interno.</div>';
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					Erro interno.</div>';
 
 					return;
 				}
@@ -266,8 +242,8 @@ class UsuariosModel
 					// Verifica se a consulta está OK e configura a mensagem
 					if ( ! $query ) {
 						$this->form_msg = '<div class="alert alert-danger fade in">
-							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-							Não foi possível editar o usuário.</div>';
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						Não foi possível editar o usuário.</div>';
 
 						// Termina
 						return;
@@ -275,7 +251,8 @@ class UsuariosModel
 					else
 					{
 						$this->form_msg = '<div class="alert alert-success fade in">
-							Usuário editado com sucesso!.</div>';
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						Usuário editado com sucesso!.</div>';
 
 						// Termina
 						return $success = true;;
