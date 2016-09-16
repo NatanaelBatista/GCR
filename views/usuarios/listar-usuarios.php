@@ -1,92 +1,34 @@
-					
-						<div class="row">
-							<div class="form-group col-md-4">
-								<h3 style="margin-top:4px;">Usuários</h3>
-							</div>
-							<div class="form-group col-md-5">
-								<div class="input-group">
-									<input type="text" class="form-control" placeholder="Search for...">
-									<span class="input-group-btn">
-										<button class="btn btn-default" type="button">
-											<span class="glyphicon glyphicon-search"></span>
-										</button>
-									</span>
-								</div>
-							</div>
-							<div class="form-group col-md-3">
-								<a class="btn btn-success btn-sm" href="<?php echo HOME_URI;?>/usuarios/inserir">Novo</a>
-							<div>
-						</div>
-					</div>
-					<?php 
+<?php
 
-						// Lista os usuários
-						$lista = $modelo->get_user_list();
+  // Lista os usuários
+  $lista = $model->get_user_list();
 
-					?>
-					<div class="row">
-						<div class="form-group col-md-12">
-							<table class="table table-condensed">
-								<thead>
-									<tr>
-										<th></th>
-										<th>Nome</th>
-										<th>Usuário</th>
-										<th>Senha</th>
-										<th>Ações</th>
-									</tr>
-								</thead>
-								<tbody>
+?>
 
-									<?php foreach ($lista as $fetch_userdata): ?>
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
 
-									<tr>
-										<td><?php echo $fetch_userdata['user_id'] ?></td>
-										<td><?php echo $fetch_userdata['user_name'] ?></td>
-										<td><?php echo $fetch_userdata['user'] ?></td>
-										<td><?php echo $fetch_userdata['user_password'] ?></td>
-										<td>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th class="mdl-data-table__cell--non-numeric">Nome</th>
+      <th class="mdl-data-table__cell--non-numeric">Permissão</th>
+      <th class="mdl-data-table__cell--non-numeric"></th>
+    </tr>
+  </thead>
 
-											<?php if( $_SERVER['REQUEST_URI'] != '/system/usuarios' ):?>
+  <?php foreach ($lista as $fetch_userdata): ?>
 
-											<script type="text/javascript">
-												$(document).ready(function() {
-												   $('#myModal').modal('show');
-												});
-											</script>
-											
-											<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">
-												Visualizar
-											</button>
+  <tbody>
+    <tr>
+      <td><?php echo $fetch_userdata['user_id'] ?></td>
+      <td class="mdl-data-table__cell--non-numeric"><a href=""><?php echo $fetch_userdata['user_name'] ?></td>
+      <td>Administrador</td>
+      <td>
+        <button type="button" class="btn btn-warning btn-xs">Editar</button>
+      </td>
+    </tr>
+  </tbody>
 
-											<?php endif; ?>
+<?php endforeach; ?>
 
-											<?php if( $_SERVER['REQUEST_URI'] == '/system/usuarios' ): ?>
-
-											<a href="<?php echo HOME_URI; ?>/usuarios/visualizar/<?php echo $fetch_userdata['user_id'] ?>" class="btn btn-primary btn-xs">
-												Visualizar
-											</a>
-
-											<?php endif; ?>
-
-											<a href="<?php echo HOME_URI; ?>/usuarios/editar/<?php echo $fetch_userdata['user_id'] ?>" class="btn btn-warning btn-xs">
-												Editar
-											</a>
-										</td>
-									</tr>
-
-								<?php endforeach; ?>
-
-								</tbody>
-							</table>
-						<div>
-					</div>
-					<div class="container">
-						<ul class="pagination">
-							<li><a href="#">1</a></li>
-							<li class="active"><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-						</ul>
-					</div>
+</table>

@@ -18,8 +18,8 @@ class UsuariosController extends MainController
 	 */
 	public function index()
 	{
-		// Carrega o modelo para este view
-        $modelo = $this->load_model('usuarios/usuarios-model');
+		// Carrega o model para este view
+        $model = $this->load_model('usuarios/usuarios-model');
 
 		// Título da página
 		$this->title = 'System';
@@ -41,8 +41,8 @@ class UsuariosController extends MainController
 	 */
 	public function inserir()
 	{
-		// Carrega o modelo para este view
-        $modelo = $this->load_model('usuarios/usuarios-model');
+		// Carrega o model para este view
+        $model = $this->load_model('usuarios/usuarios-model');
 
 		// Título da página
 		$this->title = 'System';
@@ -64,11 +64,11 @@ class UsuariosController extends MainController
 	 */
 	public function visualizar()
 	{
-		// Carrega o modelo para este view
-        $modelo = $this->load_model('usuarios/usuarios-model');
+		// Carrega o model para este view
+        $model = $this->load_model('usuarios/usuarios-model');
 
         // Inclui os parâmetros que são enviados ao método na classe SystemMVC
-        $parametros = ( func_num_args() >= 1 ) ? func_get_args( 0 ) : array();
+        $param = ( func_num_args() >= 1 ) ? func_get_args( 0 ) : array();
 
 		// Título da página
 		$this->title = 'System';
@@ -76,7 +76,6 @@ class UsuariosController extends MainController
 		// Adiciona o conteúdo da página
 		require ABSPATH . '/views/_includes/header.php';
 		require ABSPATH . '/views/_includes/nav.php';
-		require ABSPATH . '/views/usuarios/listar-usuarios.php';
 		require ABSPATH . '/views/usuarios/visualizar-usuario.php';
 		require ABSPATH . '/views/_includes/footer.php';
 	}
@@ -91,11 +90,11 @@ class UsuariosController extends MainController
 	 */
 	public function editar()
 	{
-		// Carrega o modelo para este view
-        $modelo = $this->load_model('usuarios/usuarios-model');
+		// Carrega o model para este view
+        $model = $this->load_model('usuarios/usuarios-model');
 
         // Inclui os parâmetros que são enviados ao método na classe SystemMVC
-        $parametros = ( func_num_args() >= 1 ) ? func_get_args( 0 ) : array();
+        $param = ( func_num_args() >= 1 ) ? func_get_args( 0 ) : array();
 
 		// Título da página
 		$this->title = 'System';

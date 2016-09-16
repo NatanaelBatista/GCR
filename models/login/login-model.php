@@ -17,6 +17,7 @@ class LoginModel extends MainModel
 	 *
 	 * @since 0.1
 	 * @access public
+	 * @param Object $db
 	 */
 	public function __construct( $db = false )
 	{

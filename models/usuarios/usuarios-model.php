@@ -5,7 +5,7 @@
  *
  * Classe para registros de usuários
  *
- * @package system
+ * @package systemMVC
  * @since 0.1
  */
 class UsuariosModel
@@ -44,6 +44,7 @@ class UsuariosModel
 	 *
 	 * @since 0.1
 	 * @access public
+	 * @param Object $db
 	 */
 	public function __construct( $db = false )
 	{
@@ -78,7 +79,6 @@ class UsuariosModel
 				// Todos os campos deverão ser preenchidos
 				if ( empty( $value ) )
 				{
-						
 					// Configura a mensagem
 					$this->form_msg = '<div class="alert alert-danger fade in">
 					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -106,8 +106,8 @@ class UsuariosModel
 			$db_check_user = $this->db->query
 			(
 				'SELECT * FROM `users` WHERE `user` = ?', 
-				array( 
-					chk_array( $this->form_data, 'user')		
+				array(
+					chk_array( $this->form_data, 'user')
 				) 
 			);
 			
@@ -115,8 +115,8 @@ class UsuariosModel
 			if ( ! $db_check_user )
 			{
 				$this->form_msg = '<div class="alert alert-danger fade in">
-					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					Erro interno</div>';
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				Erro interno</div>';
 
 				return;
 			}
@@ -131,8 +131,8 @@ class UsuariosModel
 				if ( ! empty( $user_id ) )
 				{
 					$this->form_msg = '<div class="alert alert-danger fade in">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-						Erro, usuário já cadastrado.</div>';
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					Erro, usuário já cadastrado.</div>';
 			
 					return;
 				}
@@ -151,8 +151,8 @@ class UsuariosModel
 					if ( ! $query )
 					{
 						$this->form_msg = '<div class="alert alert-danger fade in">
-							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-							Não foi possível cadastrar o usuário.</div>';
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						Não foi possível cadastrar o usuário.</div>';
 						
 						// Termina
 						return;
@@ -160,7 +160,7 @@ class UsuariosModel
 					else
 					{
 						$this->form_msg = '<div class="alert alert-success fade in">
-							Usuário cadastrado com sucesso!.</div>';
+						Usuário cadastrado com sucesso!.</div>';
 						
 						// Termina
 						return $success = true;
@@ -320,8 +320,8 @@ class UsuariosModel
 			if ( ! $query )
 			{
 				$this->form_msg = '<div class="alert alert-danger fade in">
-					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					Usuário não encontrado.</div>';
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				Usuário não encontrado.</div>';
 
 				return;
 			}

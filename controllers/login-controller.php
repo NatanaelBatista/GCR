@@ -3,7 +3,7 @@
 /**
  * LoginController
  *
- * @package TutsupMVC
+ * @package SystemMVC
  * @since 0.1
  */
 class LoginController extends MainController
@@ -19,7 +19,7 @@ class LoginController extends MainController
 	public function index()
 	{
 		// Retorna um objeto do model
-		$modelo = $this->load_model( 'login/login-model' );
+		$model = $this->load_model( 'login/login-model' );
 
 		// Título da página
 		$this->title = 'Login';

@@ -5,7 +5,7 @@
  *
  * Implementa as propriedades e métodos usados pelos models
  *
- * @package System
+ * @package SystemMVC
  * @since 0.1
  */
 class MainModel

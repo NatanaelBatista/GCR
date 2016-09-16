@@ -1,72 +1,207 @@
-<?php 
 
-	$inserir = $modelo->create_register_form();
-	
- ?>
-
-<form action="" method="post">
-	<div class="row">
-		<div class="form-group col-md-6">
-			<label for="nome">Nome:</label>
-			<input type="text" class="form-control" id="nome" name="user_name">	
-		</div>
-		<div class="form-group col-md-4">
-			<label for="email">Email:</label>
-			<input type="text" class="form-control" id="email" name="user">	
-		</div>
-		<div class="form-group col-md-2">	
-			<label for="senha">Senha:</label>
-			<input type="password" class="form-control" id="senha" name="user_password">	
-		</div>
-	</div>
-	<div class="row">
-		<div class="form-group col-md-12">
-			<button type="submit" class="btn btn-success btn-sm">Salvar</button>
-			<button type="resert" class="btn btn-warning btn-sm">Limpar</button>
-		</div>
-	</div>
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home">Informações Principais</a></li>
+  <li><a data-toggle="tab" href="#menu1">Informações de Contato</a></li>
+  <li><a data-toggle="tab" href="#menu2">Segurança</a></li>
+</ul>
+<form method="post">
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <br>
+      <div class="form-group col-md-6">
+        <label for="nome">Nome Completo</label>
+        <input type="text" class="form-control" id="nome" placeholder="Insira o nome">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="cpf">CPF</label>
+        <input type="text" class="form-control" id="cpf" placeholder="Insira o CPF">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="RG">RG</label>
+        <input type="text" class="form-control" id="RG" placeholder="Insira RG">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="nome_login">Data de emissão</label>
+        <input type="date" class="form-control" id="nome_login" placeholder="Insira o nome para login">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="RG">Órgão Emissor</label>
+        <input type="text" class="form-control" id="RG" placeholder="Insira RG">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="nome">Data de Nascimento</label>
+        <input type="date" class="form-control" id="nome" placeholder="Insira o nome">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="sel1">Estado Civil</label>
+        <select class="form-control" id="sel1">
+          <option>Solteiro(a)</option>
+          <option>Casado(a)</option>
+          <option>Divorciado(a)</option>
+          <option>Viúvo(a)</option>
+          <option>União estável</option>
+        </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="sel1">Escolaridade</label>
+        <select class="form-control" id="sel1">
+          <option>Fundamental</option>
+          <option>Médio</option>
+          <option>Médio Imcompleto</option>
+          <option>Superior</option>
+          <option>Superior Incompleto</option>
+        </select>
+      </div>
+      <div class="form-group col-md-12">
+        <div class="radio">
+          <label><input type="radio" name="optradio">Masculino</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="optradio">Feminino</label>
+        </div>
+      </div>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <br>
+      <div class="form-group col-md-6">
+        <label for="nome">Endereço</label>
+        <input type="text" class="form-control" id="nome" placeholder="Insira o nome">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="nome">Complemento</label>
+        <input type="text" class="form-control" id="nome" placeholder="Insira o nome">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="nome">CEP</label>
+        <input type="text" class="form-control" id="nome" placeholder="Insira o nome">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="nome">UF</label>
+        <input type="text" class="form-control" id="nome" placeholder="Insira o nome">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="nome">Cidade</label>
+        <input type="text" class="form-control" id="nome" placeholder="Insira o nome">
+      </div>
+       <div class="form-group col-md-6">
+        <label for="nome">Bairro</label>
+        <input type="text" class="form-control" id="nome" placeholder="Insira o nome">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="nome">Número</label>
+        <input type="text" class="form-control" id="nome" placeholder="Insira o nome">
+      </div>
+       <div class="form-group col-md-6">
+        <label for="nome">email</label>
+        <input type="text" class="form-control" id="nome" placeholder="Insira o nome">
+      </div>
+       <div class="form-group col-md-3">
+        <label for="nome">Telefone</label>
+        <input type="tel"  class="form-control" id="nome" placeholder="Insira o nome">
+      </div>
+       <div class="form-group col-md-3">
+        <label for="nome">Celular</label>
+        <input type="tel" class="form-control" id="nome" placeholder="Insira o nome">
+      </div>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <br>
+      <div class="form-group col-md-6">
+        <label for="nome">Login</label>
+        <input type="text" class="form-control" id="nome" placeholder="Insira o nome">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="sel1">Permissões</label>
+        <select class="form-control" id="sel1">
+          <option>Administrador</option>
+          <option>Usuário</option>
+          <option>Master</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="nome">Senha</label>
+        <input type="text" class="form-control" id="nome" placeholder="Insira o nome">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="nome">Confirme a Senha</label>
+        <input type="text" class="form-control" id="" placeholder="Insira o nome">
+      </div>
+      <div class="form-group col-md-12">
+        <div class="panel-group" id="accordion">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Pacientes</a>
+              </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse in">
+              <div class="panel-body">
+                <div class="checkbox">
+                  <label><input type="checkbox" value="">Criar</label>
+                </div>
+                <div class="checkbox">
+                  <label><input type="checkbox" value="">Editar</label>
+                </div>
+                <div class="checkbox">
+                  <label><input type="checkbox" value="">Excluir</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Medicamentos</a>
+              </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+              <div class="panel-body">
+                <div class="checkbox">
+                  <label><input type="checkbox" value="">Criar</label>
+                </div>
+                <div class="checkbox">
+                  <label><input type="checkbox" value="">Editar</label>
+                </div>
+                <div class="checkbox">
+                  <label><input type="checkbox" value="">Excluir</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Usuários</a>
+              </h4>
+            </div>
+            <div id="collapse3" class="panel-collapse collapse">
+              <div class="panel-body">
+                <div class="checkbox">
+                  <label><input type="checkbox" value="">Criar</label>
+                </div>
+                <div class="checkbox">
+                  <label><input type="checkbox" value="">Editar</label>
+                </div>
+                <div class="checkbox">
+                  <label><input type="checkbox" value="">Excluir</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-12">
+        <div class="checkbox">
+          <label><input type="checkbox" value="">Ativo</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8"></div>
+  <div class="col-md-2">
+    <button type="resert" class="btn btn-warning">Cancelar</button>
+  </div>
+  <div class="col-md-2">
+    <button type="submit" class="btn btn-success">Enviar</button>
+  </div>
 </form>
-
-<?php
-	
-	if( $inserir ) :?>
-
-	<script type="text/javascript">
-
-		$(document).ready(function() {
-			$('#myModal').modal('show');
-		});
-	
-	</script>
-
-	<input type="hidden" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal" value="Visualizar">
-
-	<div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<a href="<?php echo HOME_URI; ?>/usuarios" class="close" >&times;</a>
-				</div>
-				<div class="modal-body">
-					
-				<?php 
-
-					echo $modelo->form_msg;
-
-					
-				 ?>
-
-				</div>
-			</div> 
-		</div>
-	</div>
-
-<?php 
-
-	$modelo->form_msg = '';
-
-	endif; 
-
-	echo $modelo->form_msg;
-	
- ?>

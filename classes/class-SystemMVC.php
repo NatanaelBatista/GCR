@@ -13,21 +13,21 @@ class SystemMVC
 	 *
 	 * @access private
 	 */	
-	private $controlador;
+	private $controller;
 
 	/**
-	 * $acao
+	 * $action
 	 *
 	 * @access private
 	 */	
-	private $acao;
+	private $action;
 	
 	/**
-	 * $parametros
+	 * $param
 	 *
 	 * @access private
 	 */	
-	private $parametros;
+	private $param;
 	
 	/**
 	 * $not_found
@@ -46,62 +46,63 @@ class SystemMVC
 	{
 		$this->get_url_data();
 
-		// se nenhum controlador for especificado chame o método index do controlador home
-		if ( ! $this->controlador )
+		// Se nenhum controller for especificado o método index do controller home é chamado
+		if ( ! $this->controller )
 		{
 			require_once ABSPATH . '/controllers/home-controller.php';
 
-			$this->controlador = new HomeController();
-			$this->controlador->index();
+			$this->controller = new HomeController();
+			$this->controller->index();
 
 			return;
 		}
 
-		// se um controlador for especificado e seu controller não existir chame a página not found
-		if ( ! file_exists( ABSPATH . '/controllers/' . $this->controlador . '.php' ) )
+		// Se um controller for especificado e seu controller não existir a página not found é chamada
+		if ( ! file_exists( ABSPATH . '/controllers/' . $this->controller . '.php' ) )
 		{
 			require_once ABSPATH . $this->not_found;
 
 			return;
 		}
 
-		// mas se o controller do controlador especificado existir chame o mesmo
-		require_once ABSPATH . '/controllers/' . $this->controlador . '.php';
+		// Se o controller do controller especificado existir o mesmo é chamado
+		require_once ABSPATH . '/controllers/' . $this->controller . '.php';
 
-		$this->controlador = preg_replace( '/[^a-zA-Z]/i', '', $this->controlador );
+		// Remove caracteres inválidos do controller
+		$this->controller = preg_replace( '/[^a-zA-Z]/i', '', $this->controller );
 
 		// mas se sua classe não existir chame a página not found
-		if ( ! class_exists( $this->controlador ) )
+		if ( ! class_exists( $this->controller ) )
 		{
 			require_once ABSPATH . $this->not_found;
 
 			return;
 		}
 
-		// mas se a classe existir crie um objeto, passe os parâmetros como parâmetro
-		// e armazene no método $controlador
-		$this->controlador = new $this->controlador( $this->parametros );
+		// Se a classe existir um objeto é criado, e o atributo param é passado como parâmetro
+		$this->controller = new $this->controller( $this->param );
 		
-		$this->acao = preg_replace( '/[^a-zA-Z]/i', '', $this->acao );
+		// Remove caracteres inválidos
+		$this->action = preg_replace( '/[^a-zA-Z]/i', '', $this->action );
 
-		// se o método da ação existir chame esse método e passe os parâmetros como parâmetros
-		if ( method_exists( $this->controlador, $this->acao ) )
+		// Se o método da ação existir o método é chamado e o aributo param é passado como parâmetros
+		if ( method_exists( $this->controller, $this->action ) )
 		{
-			$this->controlador->{ $this->acao } ( $this->parametros );
+			$this->controller->{ $this->action } ( $this->param );
 
 			return;
 		}
 
-		// se nenhuma ação for especificada e o método index existir chame o método index
-		if ( ! $this->acao && method_exists( $this->controlador, 'index' ) )
+		// se nenhuma ação for especificada e o método index existir o método index é chamado
+		if ( ! $this->action && method_exists( $this->controller, 'index' ) )
 		{
-			$this->controlador->index( $this->parametros );
+			$this->controller->index( $this->param );
 
 			return;
 		}
 
-		// se o método especificado não existir chame a página not found
-		if ( ! method_exists( $this->controlador, $this->acao ) )
+		// se o método especificado não existir a página not found é chamada
+		if ( ! method_exists( $this->controller, $this->action ) )
 		{
 			require_once ABSPATH . $this->not_found;
 
@@ -112,6 +113,8 @@ class SystemMVC
 	/**
 	 * get_url_data
 	 *
+	 * Obtém os dados da URL
+	 *
 	 * @since 0.1
 	 * @access public
 	 */
@@ -121,30 +124,37 @@ class SystemMVC
 		{
 			$path = $_GET['path'];
 
-			// retiera a barra no final da string
+			// Remove a barra no final da string
 			$path = rtrim( $path, '/' );
-			// filtra a string com o filtro de URL's
+
+			// Filtra a string com o filtro de URL's
 			$path = filter_var( $path, FILTER_SANITIZE_URL );
 
+			// Cria um array com os dados
 			$path = explode( '/', $path );
 
-			$this->controlador 	= chk_array( $path, 0 );
-			$this->controlador	.= '-controller';
-			$this->acao 		= chk_array( $path, 1 );
+			// O primeiro valordo array será o controlador
+			$this->controller = chk_array( $path, 0 );
+			$this->controller .= '-controller';
 
-			if ( chk_array( $path, 2 ) ) {
+			// O segundo valor será a ação
+			$this->action = chk_array( $path, 1 );
+
+			// todos os outros valores a partir do terceiro serão parâmetros 
+			if ( chk_array( $path, 2 ) )
+			{
 				unset( $path[0] );
 				unset( $path[1] );
 
-				$this->parametros = array_values( $path );
+				$this->param = array_values( $path );
 			}
 
 			// DEBUG
 			/*
-			echo 'controlador: ' . $this->controlador . '<hr>';
-			echo 'acao: ' . $this->acao . '<hr>';
-			echo 'parametros: <pre>';
-			print_r( $this->parametros );
+			echo 'controller: ' . $this->controller . '<hr>';
+			echo 'action: ' . $this->action . '<hr>';
+			echo 'param: <pre>';
+			print_r( $this->param );
 			echo '</pre>';
 			*/
 		}

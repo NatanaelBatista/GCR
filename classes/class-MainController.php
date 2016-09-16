@@ -1,11 +1,17 @@
 <?php
 
+/**
+ * MainController
+ *
+ * @package SystemMVC
+ * @since 0.1
+ */
 class MainController extends UserLogin
 {
 	/**
 	 * $db
 	 *
-	 * Nossa conexão com a base de dados. Manterá o objeto PDO
+	 * A conexão com a base de dados. Manterá o objeto PDO
 	 *
 	 * @access public
 	 */
@@ -34,6 +40,7 @@ class MainController extends UserLogin
 	 *
 	 * @since 0.1
 	 * @access public
+	 * @param Array $parametros Parâmetros obtidos na URL
 	 */
 	public function __construct ( $parametros = array() )
 	{
@@ -51,14 +58,14 @@ class MainController extends UserLogin
 	 *
 	 * @since 0.1
 	 * @access public
+	 * @param String $odel_name 
 	 */
 	public function load_model( $model_name = false ) {
 	
-		// Um arquivo deverá ser enviado
+		// Um arquivo deverá ser passado como parâmetro
 		if ( ! $model_name )
 		{
 			return;
-		
 		}
 		else
 		{

@@ -1,15 +1,17 @@
 <?php
 
 /**
- * SystemDB - Classe para gerenciamento da base de dados
+ * SystemDB
  *
- * @package System
+ * Classe para gerenciamento da base de dados
+ *
+ * @package SystemMVC
  * @since 0.1
  */
 class SystemDB
 {
-	/** DB properties */
-	public	$hosts		= 'localhost',	// Host do banco de dados
+	// Propriedades usadas na conexão com o db
+	public 	$hosts		= 'localhost',	// Host do banco de dados
 			$db_name	= 'system',		// Nome do bando de dados
 			$user		= 'root',		// Usuário do banco de dados
 			$password	= '',			// Senha do banco de dados
@@ -76,7 +78,6 @@ class SystemDB
 			// encerra o script
 			die();
 		}
-	
 	}
 
 	/**
@@ -84,6 +85,8 @@ class SystemDB
 	 *
 	 * @since 0.1
 	 * @access public
+	 * @param String $stmt Comando SQL
+	 * @param Array $data_array Valores a ser inseridos
 	 * @return object|bool Retorna a consulta ou falso
 	 */
 	public function query( $stmt, $data_array = null )
@@ -97,11 +100,11 @@ class SystemDB
 			
 			// Retorna a consulta
 			return $query;
-			
-		} else {
-		
+		}
+		else
+		{
 			// Configura o erro
-			$error       = $query->errorInfo();
+			$error = $query->errorInfo();
 			$this->error = $error[2];
 			
 			// Retorna falso
@@ -124,12 +127,12 @@ class SystemDB
 	{
 		// Configura o array de colunas
 		$cols = array();
+
+		// Configura o array de valores
+		$values = array();
 		
 		// Configura o valor inicial do modelo
 		$place_holders = '(';
-		
-		// Configura o array de valores
-		$values = array();
 		
 		// O $j will assegura que colunas serão configuradas apenas uma vez
 		$j = 1;
@@ -150,7 +153,8 @@ class SystemDB
 			foreach ( $data[$i] as $col => $val )
 			{
 				// A primeira volta do laço configura as colunas
-				if ( $i === 1 ) {
+				if ( $i === 1 )
+				{
 					$cols[] = "`$col`";
 				}
 				
@@ -169,7 +173,7 @@ class SystemDB
 				$j = $i;
 			}
 			
-			// Remove os caracteres extra dos place holders
+			// Remove os caracteres extra dos place holders, o espaço e vírgula
 			$place_holders = substr( $place_holders, 0, strlen( $place_holders ) - 2 );
 		}
 		
@@ -186,9 +190,8 @@ class SystemDB
 		if ( $insert )
 		{
 			// Verifica se temos o último ID enviado
-			if ( method_exists( $this->pdo, 'lastInsertId' ) 
-				&& $this->pdo->lastInsertId() 
-			) {
+			if ( method_exists( $this->pdo, 'lastInsertId' ) && $this->pdo->lastInsertId() )
+			{
 				// Configura o último ID
 				$this->last_id = $this->pdo->lastInsertId();
 			}
@@ -198,8 +201,7 @@ class SystemDB
 		}
 
 		return;
-
-	} // insert
+	}
 	
 	/**
 	 * Update simples
@@ -216,7 +218,7 @@ class SystemDB
 	 */
 	public function update( $table, $where_field, $where_field_value, $values )
 	{
-		// Você tem que enviar todos os parâmetros
+		// É necessário enviar todos os parâmetros
 		if ( empty($table) || empty($where_field) || empty($where_field_value)  )
 		{
 			return;
@@ -231,8 +233,9 @@ class SystemDB
 		// Configura a declaração do WHERE campo=valor
 		$where = " WHERE `$where_field` = ? ";
 		
-		// Você precisa enviar um array com valores
-		if ( ! is_array( $values ) ) {
+		// É necessário enviar um array com valores
+		if ( ! is_array( $values ) )
+		{
 			return;
 		}
 		
@@ -296,7 +299,7 @@ class SystemDB
 		// Concatena tudo
 		$stmt .= $where;
 		
-		// O valor que vamos buscar para apagar
+		// Valor que irá buscar para apagar
 		$values = array( $where_field_value );
 
 		// Apaga
