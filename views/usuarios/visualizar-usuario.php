@@ -1,5 +1,7 @@
 <?php 
 
+  if ( ! defined('ABSPATH')) exit; 
+
   $model->get_register_form( chk_array( $param, 0 ) );
   
  ?>

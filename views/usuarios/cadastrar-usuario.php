@@ -1,4 +1,6 @@
 <?php 
+  
+  if ( ! defined('ABSPATH')) exit;
 
   $model->create_register_form();
   

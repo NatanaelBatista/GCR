@@ -1,3 +1,5 @@
+<?php if ( ! defined('ABSPATH')) exit; ?>
+
 <!doctype html>
 <!--
   Material Design Lite
