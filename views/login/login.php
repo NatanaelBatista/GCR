@@ -92,42 +92,45 @@
   <body>
     <div class="mdl-dialog login">
       <div class="mdl-dialog__content">
-      <div class="row">
-        <div class="col-sm-4">
+        
+        <div class="row">
+          <div class="col-sm-4">
             <img src="views/_img/logo.jpg" width="130px" style="margin-bottom: 20px;">
           </div>
-        <div class="col-sm-7">
+          <div class="col-sm-7">
             <h3>Sistema gerenciador de casas de descanso</h3>
           </div> 
+        </div>
+        <form class="form-horizontal" method="post">
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="login">login</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="login" name="user" placeholder="Insira o login">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Senha</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="pwd" name="user_password" placeholder="Insira a senha">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-success">Login</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+            <?php 
+
+              echo $model->form_msg;
+
+             ?>
+            </div>
+          </div>
+        </form>
       </div>
-      <form class="form-horizontal" method="post">
-        <div class="form-group">
-          <label class="control-label col-sm-2" for="login">login</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="login" name="user" placeholder="Insira o login">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-sm-2" for="pwd">Senha</label>
-          <div class="col-sm-10">
-            <input type="password" class="form-control" id="pwd" name="user_password" placeholder="Insira a senha">
-          </div>
-        </div>
-        <div class="form-group"> 
-        <div class="col-sm-offset-2 col-sm-10">
-          <div class="checkbox">
-            <label><input type="checkbox"> Lembrar</label>
-          </div>
-        </div>
-      </div>
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-success">Login</button>
-          </div>
-        </div>
-      </form>
     </div>
-  </div>
     <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
   </body>
 </html>
