@@ -1,4 +1,15 @@
-<?php if ( ! defined('ABSPATH')) exit; ?>
+<?php
+
+  if ( ! isset( $_SESSION['user_name'] ) )
+  {
+    // Redireciona para a página login
+    $path = HOME_URI . '/login';
+    header( "Location: {$path}" );
+  }
+
+  if ( ! defined('ABSPATH') ) exit;
+
+?>
 
 <!doctype html>
 <!--

@@ -1,6 +1,6 @@
 <?php 
 
-  if ( ! defined('ABSPATH')) exit;
+  if ( ! defined('ABSPATH') ) exit;
 
   $model->edit_register_form( chk_array( $param, 0 ) );
   $model->get_register_form( chk_array( $param, 0 ) );

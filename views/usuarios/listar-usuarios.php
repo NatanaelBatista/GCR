@@ -1,6 +1,6 @@
 <?php
 
-  if ( ! defined('ABSPATH')) exit;
+  if ( ! defined('ABSPATH') ) exit;
 
   // Lista os usuários
   $lista = $model->get_user_list();

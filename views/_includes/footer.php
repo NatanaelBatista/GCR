@@ -1,4 +1,4 @@
-<?php if ( ! defined('ABSPATH')) exit; ?>
+<?php if ( ! defined('ABSPATH') ) exit; ?>
           
           </div>
           <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">

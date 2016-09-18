@@ -1,4 +1,4 @@
-<?php if ( ! defined('ABSPATH')) exit; ?>
+<?php if ( ! defined('ABSPATH') ) exit; ?>
 
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
@@ -11,7 +11,7 @@
           <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
             <li class="mdl-menu__item">About</li>
             <li class="mdl-menu__item">Contact</li>
-            <li class="mdl-menu__item">Legal information</li>
+            <li class="mdl-menu__item"><a href="<?php echo HOME_URI; ?>/login/logout">Sair</a></li>
           </ul>
         </div>
       </header>
@@ -19,7 +19,7 @@
         <header class="demo-drawer-header">
           <h3 style="text-align:center;"><i class="material-icons  mdl-list__item-avatar">person</i></h3>
           <div class="demo-avatar-dropdown">
-            <h5 style="text-align:center;"><a class="user-header" href="">Natanael Batista</a></h5>
+            <h5 style="text-align:center;"><a class="user-header" href=""><?php echo $_SESSION['user_name']; ?></a></h5>
             <div class="mdl-layout-spacer"></div>
             <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
               <i class="material-icons" role="presentation">arrow_drop_down</i>

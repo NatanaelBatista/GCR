@@ -92,6 +92,9 @@ class LoginModel extends MainModel
 
 					if ( $this->form_data['user_password'] == $fetch_user['user_password'] )
 					{
+						//$_SESSION['user_name'] = $this->form_data['user_name'];
+						$_SESSION['user_name'] = 'teste';
+
 						// Redireciona para a página home
 						$path = HOME_URI . '/home';
 						header( "Location: {$path}" );
@@ -107,5 +110,21 @@ class LoginModel extends MainModel
 				}
 			}
 		}
+	}
+
+	/**
+	 * user_login 
+	 *
+	 * Faz o login do usuário
+	 *
+	 * @since 0.1
+	 * @access public
+	 */
+	public function user_logout()
+	{
+		session_destroy();
+
+		$path = HOME_URI . '/login';
+		header( "Location: {$path}" );
 	}
 }
