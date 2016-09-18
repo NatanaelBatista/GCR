@@ -27,4 +27,21 @@ class LoginController extends MainController
 		// Adiciona o conteúdo da página
 		require ABSPATH . '/views/login/login.php';
 	}
+
+	/**
+	 * logout
+	 *
+	 * faz zo logout do usuário
+	 *
+	 * @since 0.1
+	 * @access public
+	 */
+	public function logout()
+	{
+		// Retorna um objeto do model
+		$model = $this->load_model( 'login/login-model' );
+
+		// Método que faz o logout
+		$model->user_logout();
+	}
 }

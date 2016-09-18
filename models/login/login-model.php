@@ -113,9 +113,9 @@ class LoginModel extends MainModel
 	}
 
 	/**
-	 * user_login 
+	 * user_logout
 	 *
-	 * Faz o login do usuário
+	 * Faz o logout do usuário
 	 *
 	 * @since 0.1
 	 * @access public
